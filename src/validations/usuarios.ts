@@ -8,9 +8,8 @@ export const usuariosPostOneBody = Joi.object()
   })
   .required();
 
-export const usuariosResetPasswordPostBody = Joi.object()
+export const usuariosVerificarUsuarioPostBody = Joi.object()
   .keys({
     token: Joi.string().required(),
-    senha: Joi.string().min(6).required(),
   })
   .required();

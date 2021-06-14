@@ -1,6 +1,6 @@
 import { createModel, createSchema } from "@ev-fns/mongo";
 
-interface UsuarioProps {
+export interface UsuarioProps {
   nome: string;
   email: string;
   senha: string;

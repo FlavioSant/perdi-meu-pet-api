@@ -22,13 +22,9 @@ components:
         email:
           type: string
           format: email
-        senha:
-          type: string
-          format: password
       required:
         - nome
         - email
-        - senha
 
     RequestPostUsuarioBody:
       type: object
@@ -45,6 +41,14 @@ components:
         - nome
         - email
         - senha
+
+    RequestPostVerificarUsuarioBody:
+      type: object
+      properties:
+        token:
+          type: string
+      required:
+        - token
 
     RequestPostResetPasswordBody:
       type: object

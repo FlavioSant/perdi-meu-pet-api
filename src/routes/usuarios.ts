@@ -2,11 +2,11 @@ import { Router } from "express";
 import { body } from "@ev-fns/validation";
 import {
   usuariosPostOneBody,
-  usuariosResetPasswordPostBody,
+  usuariosVerificarUsuarioPostBody,
 } from "../validations/usuarios";
 import {
   usuariosPostOne,
-  usuariosResetPasswordPost,
+  usuariosVerificarUsuarioPost,
 } from "../endpoints/usuarios";
 
 const router = Router();
@@ -23,18 +23,18 @@ const router = Router();
 router.post("/usuarios", body(usuariosPostOneBody), usuariosPostOne);
 
 /**
- * POST /reset-password
+ * POST /verificar-usuario
  * @tag Usuarios
- * @bodyContent {RequestPostResetPasswordBody} application/json
+ * @bodyContent {RequestPostVerificarUsuarioBody} application/json
  * @response 200
  * @responseContent {Usuario} 200.application/json
  * @response default
  * @responseContent {Error} default.application/json
  */
 router.post(
-  "/reset-password",
-  body(usuariosResetPasswordPostBody),
-  usuariosResetPasswordPost,
+  "/verificar-usuario",
+  body(usuariosVerificarUsuarioPostBody),
+  usuariosVerificarUsuarioPost,
 );
 
 export default router;
