@@ -1,0 +1,55 @@
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+
+  schemas:
+    error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Internal server error
+      required:
+        - message
+
+    book:
+      type: object
+      properties:
+        bookId:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: Moby-Dick
+        author:
+          type: string
+          example: Herman Melville
+      required:
+        - bookId
+        - title
+        - author
+
+    booksPostRequestBody:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Moby-Dick
+        author:
+          type: string
+          example: Herman Melville
+      required:
+        - title
+        - author
+
+    booksPatchRequestBody:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Moby-Dick
+        author:
+          type: string
+          example: Herman Melville

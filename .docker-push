@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+/* eslint-disable */
+const dotenv = require("@ev-fns/dotenv");
+
+dotenv();
+
+const path = require("path");
+const { version } = require(path.join(__dirname, "package.json"));
+const { spawn } = require("@ev-fns/spawn");
+
+(async () => {
+  const image = process.env.API_IMAGE;
+
+  await spawn(`docker push ${image}:latest`);
+  await spawn(`docker push ${image}:${version}`);
+})();
