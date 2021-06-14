@@ -1,11 +1,11 @@
 components:
   securitySchemes:
-    bearerAuth:
+    BearerAuth:
       type: http
       scheme: bearer
 
   schemas:
-    error:
+    Error:
       type: object
       properties:
         message:
@@ -14,42 +14,46 @@ components:
       required:
         - message
 
-    book:
+    Usuario:
       type: object
       properties:
-        bookId:
-          type: integer
-          example: 1
-        title:
+        nome:
           type: string
-          example: Moby-Dick
-        author:
+        email:
           type: string
-          example: Herman Melville
+          format: email
+        senha:
+          type: string
+          format: password
       required:
-        - bookId
-        - title
-        - author
+        - nome
+        - email
+        - senha
 
-    booksPostRequestBody:
+    RequestPostUsuarioBody:
       type: object
       properties:
-        title:
+        nome:
           type: string
-          example: Moby-Dick
-        author:
+        email:
           type: string
-          example: Herman Melville
+          format: email
+        senha:
+          type: string
+          format: password
       required:
-        - title
-        - author
+        - nome
+        - email
+        - senha
 
-    booksPatchRequestBody:
+    RequestPostResetPasswordBody:
       type: object
       properties:
-        title:
+        token:
           type: string
-          example: Moby-Dick
-        author:
+        senha:
           type: string
-          example: Herman Melville
+          format: password
+      required:
+        - token
+        - senha
