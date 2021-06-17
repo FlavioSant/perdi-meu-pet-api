@@ -1,16 +1,27 @@
 import { Router } from "express";
 import { body } from "@ev-fns/validation";
-import { authSignInPostBody } from "../validations/auth";
-import { authSingInPost } from "../endpoints/auth";
+import { authSignUpPostBody, authSignInPostBody } from "../validations/auth";
+import { authSingUpPost, authSingInPost } from "../endpoints/auth";
 
 const router = Router();
 
 /**
+ * POST /sign-up
+ * @tag Auth
+ * @bodyContent {SignUpRequestPostBody} application/json
+ * @response 201
+ * @responseContent {SignUpResponsePostBody} 201.application/json
+ * @response default
+ * @responseContent {Error} default.application/json
+ */
+router.post("/sign-up", body(authSignUpPostBody), authSingUpPost);
+
+/**
  * POST /sign-in
  * @tag Auth
- * @bodyContent {RequestPostSignInBody} application/json
+ * @bodyContent {SignInRequestPostBody} application/json
  * @response 200
- * @responseContent {ResponsePostSignInBody} 200.application/json
+ * @responseContent {SignInResponsePostBody} 200.application/json
  * @response default
  * @responseContent {Error} default.application/json
  */

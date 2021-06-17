@@ -14,21 +14,7 @@ components:
       required:
         - message
 
-    Usuario:
-      type: object
-      properties:
-        nome:
-          type: string
-          example: Thiago Nascimento
-        email:
-          type: string
-          format: email
-          example: thiagonasc@gmail.com
-      required:
-        - nome
-        - email
-
-    RequestPostUsuarioBody:
+    SignUpRequestPostBody:
       type: object
       properties:
         nome:
@@ -47,7 +33,21 @@ components:
         - email
         - senha
 
-    RequestPostSignInBody:
+    SignUpResponsePostBody:
+      type: object
+      properties:
+        nome:
+          type: string
+          example: Thiago Nascimento
+        email:
+          type: string
+          format: email
+          example: thiagonasc@gmail.com
+      required:
+        - nome
+        - email
+
+    SignInRequestPostBody:
       type: object
       properties:
         email:
@@ -62,7 +62,7 @@ components:
         - email
         - senha
 
-    ResponsePostSignInBody:
+    SignInResponsePostBody:
       type: object
       properties:
         token:
