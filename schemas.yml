@@ -19,9 +19,11 @@ components:
       properties:
         nome:
           type: string
+          example: Thiago Nascimento
         email:
           type: string
           format: email
+          example: thiagonasc@gmail.com
       required:
         - nome
         - email
@@ -31,33 +33,16 @@ components:
       properties:
         nome:
           type: string
+          example: Thiago Nascimento
         email:
           type: string
           format: email
+          example: thiagonasc@gmail.com
         senha:
           type: string
           format: password
+          example: K610aoz6r4
       required:
         - nome
         - email
-        - senha
-
-    RequestPostVerificarUsuarioBody:
-      type: object
-      properties:
-        token:
-          type: string
-      required:
-        - token
-
-    RequestPostResetPasswordBody:
-      type: object
-      properties:
-        token:
-          type: string
-        senha:
-          type: string
-          format: password
-      required:
-        - token
         - senha

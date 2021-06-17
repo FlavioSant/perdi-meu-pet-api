@@ -1,13 +1,18 @@
 import { endpoint } from "@ev-fns/endpoint";
 import { Usuario, UsuarioProps } from "../models/Usuario";
-import { nanoid } from "nanoid";
-import { HttpError } from "@ev-fns/errors";
 import bcrypt from "bcryptjs";
+import { HttpError } from "@ev-fns/errors";
 
 const parseUsuario = ({ nome, email }: UsuarioProps) => ({ nome, email });
 
 export const usuariosPostOne = endpoint(async (req, res) => {
   const { email, senha, nome } = req.body;
+
+  const exists = await Usuario.exists({ email });
+
+  if (exists) {
+    throw new HttpError(409, `email "${email}" already exists`);
+  }
 
   const hash = await bcrypt.hash(senha, 12);
 
@@ -15,31 +20,9 @@ export const usuariosPostOne = endpoint(async (req, res) => {
     nome,
     email,
     senha: hash,
-    status: { verified: false, token: nanoid() },
   });
 
   console.log(usuario.toObject());
 
   res.status(201).json(parseUsuario(usuario));
-});
-
-export const usuariosVerificarUsuarioPost = endpoint(async (req, res) => {
-  const { token } = req.body;
-
-  const usuario = await Usuario.findOneAndUpdate(
-    {
-      "status.verified": false,
-      "status.token": token,
-    },
-    { status: { verified: true } },
-    { new: true },
-  );
-
-  if (!usuario) {
-    throw new HttpError(401, "Unauthorized");
-  }
-
-  console.log(usuario.toObject());
-
-  res.status(200).json(parseUsuario(usuario));
 });

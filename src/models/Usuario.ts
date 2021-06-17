@@ -4,14 +4,6 @@ export interface UsuarioProps {
   nome: string;
   email: string;
   senha: string;
-  status: {
-    verified: boolean;
-    token?: string;
-  };
-  reset?: {
-    token: string;
-    expiresAt: Date;
-  };
 }
 
 export const Usuario = createModel<UsuarioProps>(
@@ -32,30 +24,6 @@ export const Usuario = createModel<UsuarioProps>(
     senha: {
       type: String,
       required: true,
-    },
-    status: {
-      type: createSchema({
-        verified: {
-          type: Boolean,
-          required: true,
-        },
-        token: {
-          type: String,
-        },
-      }),
-      required: true,
-    },
-    reset: {
-      type: createSchema({
-        token: {
-          type: String,
-          required: true,
-        },
-        expiresAt: {
-          type: Date,
-          required: true,
-        },
-      }),
     },
   }),
   "usuarios",
