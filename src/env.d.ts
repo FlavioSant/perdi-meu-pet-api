@@ -3,7 +3,7 @@ declare namespace NodeJS {
     NODE_ENV: "development" | "test" | "production" | "staging";
     PORT: string;
     API_NAME: string;
-    API_TOKEN: string;
+    JWT_SECRET: string;
     MONGODB_PROTOCOL: "mongodb" | "mongodb+srv";
     MONGODB_SERVER: string;
     MONGODB_PORT: string;

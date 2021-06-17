@@ -26,10 +26,10 @@
     "typescript": "^4.3.2"
   },
   "dependencies": {
-    "@ev-fns/auth": "^0.2.1",
     "@ev-fns/dotenv": "^0.2.2",
     "@ev-fns/endpoint": "^0.1.2",
     "@ev-fns/errors": "^0.1.1",
+    "@ev-fns/jwt": "^0.1.6",
     "@ev-fns/mongo": "^0.1.3",
     "@ev-fns/openapi": "^0.3.2",
     "@ev-fns/server": "^0.2.1",

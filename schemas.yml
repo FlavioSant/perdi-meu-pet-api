@@ -46,3 +46,42 @@ components:
         - nome
         - email
         - senha
+
+    RequestPostSignInBody:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          example: thiagonasc@gmail.com
+        senha:
+          type: string
+          format: password
+          example: K610aoz6r4
+      required:
+        - email
+        - senha
+
+    ResponsePostSignInBody:
+      type: object
+      properties:
+        token:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21lIjoiVGhpYWdvIE5hc2NpbWVudG8iLCJlbWFpbCI6InRoaWFnb25hc2NAZ21haWwuY29tIiwiaWF0IjoxNjIzOTMxMDY0LCJleHAiOjE2MjQwMTc0NjR9.sFyurQykroP6gkPFrUnuHBKHlKrIE504OjfAEWYh5ic
+        usuario:
+          type: object
+          properties:
+            email:
+              type: string
+              format: email
+              example: thiagonasc@gmail.com
+            senha:
+              type: string
+              format: password
+              example: K610aoz6r4
+          required:
+            - email
+            - senha
+      required:
+        - token
+        - usuario
