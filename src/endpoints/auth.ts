@@ -2,10 +2,9 @@ import { endpoint } from "@ev-fns/endpoint";
 import { HttpError } from "@ev-fns/errors";
 import { encode } from "@ev-fns/jwt";
 import { compare } from "bcryptjs";
-import { Usuario, UsuarioProps } from "../models/Usuario";
+import { Usuario } from "../models/Usuario";
 import bcrypt from "bcryptjs";
-
-const parseUsuario = ({ nome, email }: UsuarioProps) => ({ nome, email });
+import { parseUsuario } from "../functions/parseUsuario";
 
 export const authSingUpPost = endpoint(async (req, res) => {
   const { email, senha, nome } = req.body;
