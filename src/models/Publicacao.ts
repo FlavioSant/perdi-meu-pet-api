@@ -12,6 +12,7 @@ export interface PublicacaoProps {
   latitude: number;
   longitude: number;
   usuarioId: string;
+  anexos: string[];
 }
 
 export const Publicacao = createModel<PublicacaoProps>(
@@ -57,6 +58,10 @@ export const Publicacao = createModel<PublicacaoProps>(
     usuarioId: {
       type: Types.ObjectId as any,
       ref: "Usuario",
+      required: true,
+    },
+    anexos: {
+      type: [String],
       required: true,
     },
   }),

@@ -116,6 +116,11 @@ components:
         longitude:
           type: number
           example: -49.065628
+        anexos:
+          type: array
+          items:
+            type: string
+            example: LD9a2_mPBt_ppg0Kjd5Kf
       required:
         - tipo
         - categoria
@@ -123,6 +128,7 @@ components:
         - sexo
         - latitude
         - longitude
+        - anexos
 
     PublicacaoResponsePostBody:
       type: object
