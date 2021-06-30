@@ -175,3 +175,29 @@ components:
         - latitude
         - longitude
         - usuario
+
+    Anexo:
+      type: object
+      properties:
+        anexoId:
+          type: string
+          example: 9ObU3VntvrQQvZh2gIyUN
+        nome:
+          type: string
+          example: screenshot.png
+        mimeType:
+          type: string
+          example: image/png
+      required:
+        - anexoId
+        - nome
+        - mimeType
+
+    AnexoPostBody:
+      type: object
+      properties:
+        anexo:
+          type: string
+          format: binary
+      required:
+        - anexo
