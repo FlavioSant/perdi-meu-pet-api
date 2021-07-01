@@ -207,3 +207,21 @@ components:
           format: binary
       required:
         - anexo
+
+    SearchRequestPostBody:
+      type: object
+      properties:
+        latitude:
+          type: number
+          example: -22.303074
+        longitude:
+          type: number
+          example: -49.065628
+      required:
+        - latitude
+        - longitude
+
+    SearchResponsePostBody:
+      type: object
+      properties:
+      required:
