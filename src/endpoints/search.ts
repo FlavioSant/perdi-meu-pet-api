@@ -2,7 +2,7 @@ import { endpoint } from "@ev-fns/endpoint";
 import { parsePublicacao } from "../functions/parsePublicacao";
 import { Publicacao } from "../models/Publicacao";
 
-const RADIUS = 10 / 6371;
+const RADIUS = 5 / 6378;
 
 export const searchPost = endpoint(async (req, res) => {
   const { latitude, longitude } = req.body;
@@ -10,7 +10,7 @@ export const searchPost = endpoint(async (req, res) => {
   const publicacoes = await Publicacao.find({
     localizacao: {
       $geoWithin: {
-        $center: [[longitude, latitude], RADIUS],
+        $centerSphere: [[longitude, latitude], RADIUS],
       },
     },
   }).populate("usuarioId");
