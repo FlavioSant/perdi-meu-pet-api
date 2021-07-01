@@ -13,7 +13,21 @@ export interface PublicacaoProps {
   longitude: number;
   usuarioId: string;
   anexos: string[];
+  localizacao: any;
 }
+
+const PointSchema = createSchema<any>({
+  type: {
+    type: String,
+    enum: ["Point"],
+    default: "Point",
+    required: true,
+  },
+  coordinates: {
+    type: [Number],
+    required: true,
+  },
+});
 
 export const Publicacao = createModel<PublicacaoProps>(
   "Publicacao",
@@ -53,6 +67,11 @@ export const Publicacao = createModel<PublicacaoProps>(
     },
     longitude: {
       type: Number,
+      required: true,
+    },
+    localizacao: {
+      type: PointSchema,
+      index: "2dsphere",
       required: true,
     },
     usuarioId: {

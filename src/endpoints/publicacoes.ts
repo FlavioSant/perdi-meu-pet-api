@@ -1,13 +1,8 @@
 import { endpoint } from "@ev-fns/endpoint";
 import { HttpError } from "@ev-fns/errors";
-import { parseUsuario } from "../functions/parseUsuario";
 import { Publicacao } from "../models/Publicacao";
 import { Usuario } from "../models/Usuario";
-
-const parse = ({ _id, ...rest }: Record<string, any>): Record<string, any> => ({
-  publicacaoId: _id,
-  ...rest,
-});
+import { parsePublicacao } from "../functions/parsePublicacao";
 
 export const publicacoesPost = endpoint(async (req, res) => {
   const usuario = await Usuario.findOne({ email: req.token.email });
@@ -16,17 +11,18 @@ export const publicacoesPost = endpoint(async (req, res) => {
     throw new HttpError(401, "invalid token");
   }
 
+  const { latitude, longitude } = req.body;
+
   const inserted = await Publicacao.create({
     ...req.body,
     usuarioId: usuario._id,
+    localizacao: {
+      type: "Point",
+      coordinates: [longitude, latitude],
+    },
   });
 
-  const publicacao = parse(inserted.toObject());
-
-  delete publicacao.usuarioId;
-  delete publicacao.__v;
-
-  publicacao.usuario = parseUsuario(usuario);
+  const publicacao = parsePublicacao(inserted.toObject(), usuario);
 
   res.status(200).json(publicacao);
 });
