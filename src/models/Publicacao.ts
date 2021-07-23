@@ -2,7 +2,7 @@ import { createModel, createSchema } from "@ev-fns/mongo";
 import { Types } from "mongoose";
 
 export interface PublicacaoProps {
-  tipo: "adocao" | "perdido" | "encontrado";
+  situacao: "adocao" | "desaparecido" | "encontrado";
   categoria: "cachorro" | "gato" | "outros";
   porte: "pequeno" | "medio" | "grande";
   sexo: "macho" | "femea" | "outros";
@@ -32,9 +32,9 @@ const PointSchema = createSchema<any>({
 export const Publicacao = createModel<PublicacaoProps>(
   "Publicacao",
   createSchema({
-    tipo: {
+    situacao: {
       type: String,
-      enum: ["adocao", "perdido", "encontrado"],
+      enum: ["adocao", "desaparecido", "encontrado"],
       required: true,
     },
     categoria: {
@@ -81,7 +81,6 @@ export const Publicacao = createModel<PublicacaoProps>(
     },
     anexos: {
       type: [String],
-      required: true,
     },
   }),
   "publicacoes",

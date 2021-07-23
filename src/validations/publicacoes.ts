@@ -2,7 +2,7 @@ import Joi from "joi";
 
 export const publicacoesPostBody = Joi.object()
   .keys({
-    tipo: Joi.valid("adocao", "perdido", "encontrado").required(),
+    situacao: Joi.valid("adocao", "desaparecido", "encontrado").required(),
     categoria: Joi.valid("cachorro", "gato", "outros").required(),
     porte: Joi.valid("pequeno", "medio", "grande").required(),
     sexo: Joi.valid("macho", "femea", "outros").required(),
@@ -11,6 +11,6 @@ export const publicacoesPostBody = Joi.object()
     observacoes: Joi.string(),
     latitude: Joi.number().required(),
     longitude: Joi.number().required(),
-    anexos: Joi.array().items(Joi.string().required()).required(),
+    anexos: Joi.array().items(Joi.string().required()),
   })
   .required();

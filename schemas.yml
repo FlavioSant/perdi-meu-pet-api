@@ -89,9 +89,9 @@ components:
     PublicacaoRequestPostBody:
       type: object
       properties:
-        tipo:
+        situacao:
           type: string
-          example: perdido
+          example: desaparecido
         categoria:
           type: string
           example: cachorro
@@ -122,20 +122,19 @@ components:
             type: string
             example: LD9a2_mPBt_ppg0Kjd5Kf
       required:
-        - tipo
+        - situacao
         - categoria
         - porte
         - sexo
         - latitude
         - longitude
-        - anexos
 
     PublicacaoResponsePostBody:
       type: object
       properties:
-        tipo:
+        situacao:
           type: string
-          example: perdido
+          example: desaparecido
         categoria:
           type: string
           example: cachorro
@@ -174,7 +173,7 @@ components:
             - nome
             - email
       required:
-        - tipo
+        - situacao
         - categoria
         - porte
         - sexo
