@@ -129,7 +129,43 @@ components:
         - latitude
         - longitude
 
-    PublicacaoResponsePostBody:
+    PublicacaoRequestPatchBody:
+      type: object
+      properties:
+        situacao:
+          type: string
+          example: desaparecido
+        categoria:
+          type: string
+          example: cachorro
+        porte:
+          type: string
+          example: medio
+        sexo:
+          type: string
+          example: macho
+        cor:
+          type: string
+          example: preto
+        nome:
+          type: string
+          example: cachorro
+        observacoes:
+          type: string
+          example: cachorro preto
+        latitude:
+          type: number
+          example: -22.303074
+        longitude:
+          type: number
+          example: -49.065628
+        anexos:
+          type: array
+          items:
+            type: string
+            example: LD9a2_mPBt_ppg0Kjd5Kf
+
+    Publicacao:
       type: object
       properties:
         situacao:

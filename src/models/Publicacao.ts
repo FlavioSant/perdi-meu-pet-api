@@ -31,57 +31,60 @@ const PointSchema = createSchema<any>({
 
 export const Publicacao = createModel<PublicacaoProps>(
   "Publicacao",
-  createSchema({
-    situacao: {
-      type: String,
-      enum: ["adocao", "desaparecido", "encontrado"],
-      required: true,
+  createSchema(
+    {
+      situacao: {
+        type: String,
+        enum: ["adocao", "desaparecido", "encontrado"],
+        required: true,
+      },
+      categoria: {
+        type: String,
+        enum: ["cachorro", "gato", "outros"],
+        required: true,
+      },
+      porte: {
+        type: String,
+        enum: ["pequeno", "medio", "grande"],
+        required: true,
+      },
+      sexo: {
+        type: String,
+        enum: ["macho", "femea", "outros"],
+        required: true,
+      },
+      cor: {
+        type: String,
+      },
+      nome: {
+        type: String,
+      },
+      observacoes: {
+        type: String,
+      },
+      latitude: {
+        type: Number,
+        required: true,
+      },
+      longitude: {
+        type: Number,
+        required: true,
+      },
+      localizacao: {
+        type: PointSchema,
+        index: "2dsphere",
+        required: true,
+      },
+      usuarioId: {
+        type: Types.ObjectId as any,
+        ref: "Usuario",
+        required: true,
+      },
+      anexos: {
+        type: [String],
+      },
     },
-    categoria: {
-      type: String,
-      enum: ["cachorro", "gato", "outros"],
-      required: true,
-    },
-    porte: {
-      type: String,
-      enum: ["pequeno", "medio", "grande"],
-      required: true,
-    },
-    sexo: {
-      type: String,
-      enum: ["macho", "femea", "outros"],
-      required: true,
-    },
-    cor: {
-      type: String,
-    },
-    nome: {
-      type: String,
-    },
-    observacoes: {
-      type: String,
-    },
-    latitude: {
-      type: Number,
-      required: true,
-    },
-    longitude: {
-      type: Number,
-      required: true,
-    },
-    localizacao: {
-      type: PointSchema,
-      index: "2dsphere",
-      required: true,
-    },
-    usuarioId: {
-      type: Types.ObjectId as any,
-      ref: "Usuario",
-      required: true,
-    },
-    anexos: {
-      type: [String],
-    },
-  }),
+    { timestamps: true },
+  ),
   "publicacoes",
 );

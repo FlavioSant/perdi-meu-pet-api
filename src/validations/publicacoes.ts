@@ -14,3 +14,23 @@ export const publicacoesPostBody = Joi.object()
     anexos: Joi.array().items(Joi.string().required()),
   })
   .required();
+
+export const publicacoesPatchBody = Joi.object()
+  .keys({
+    situacao: Joi.valid("adocao", "desaparecido", "encontrado"),
+    categoria: Joi.valid("cachorro", "gato", "outros"),
+    porte: Joi.valid("pequeno", "medio", "grande"),
+    sexo: Joi.valid("macho", "femea", "outros"),
+    cor: Joi.string(),
+    nome: Joi.string(),
+    observacoes: Joi.string(),
+    latitude: Joi.number(),
+    longitude: Joi.number(),
+    anexos: Joi.array().items(Joi.string()),
+  })
+  .min(1)
+  .required();
+
+export const publicacoesGetParams = Joi.object()
+  .keys({ _id: Joi.string().required() })
+  .required();
