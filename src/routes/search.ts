@@ -28,6 +28,11 @@ router.post("/search", jwt, body(searchPostBody), searchPost);
  * @response default
  * @responseContent {Error} default.application/json
  */
-router.post("/search", jwt, body(searchFilterPostBody), searchFilterPost);
+router.post(
+  "/search-filter",
+  jwt,
+  body(searchFilterPostBody),
+  searchFilterPost,
+);
 
 export default router;
