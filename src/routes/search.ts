@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { body } from "@ev-fns/validation";
-import { searchPostBody } from "../validations/search";
-import { searchPost } from "../endpoints/search";
+import { searchFilterPostBody, searchPostBody } from "../validations/search";
+import { searchFilterPost, searchPost } from "../endpoints/search";
 import { jwt } from "../middlewares/jwt";
 
 const router = Router();
@@ -12,10 +12,22 @@ const router = Router();
  * @security BearerAuth
  * @bodyContent {SearchRequestPostBody} application/json
  * @response 200
- * @responseContent {SearchResponsePostBody} 200.application/json
+ * @responseContent {Publicacao[]} 200.application/json
  * @response default
  * @responseContent {Error} default.application/json
  */
 router.post("/search", jwt, body(searchPostBody), searchPost);
+
+/**
+ * POST /search-filter
+ * @tag Search
+ * @security BearerAuth
+ * @bodyContent {SearchFilterRequestPostBody} application/json
+ * @response 200
+ * @responseContent {Publicacao[]} 200.application/json
+ * @response default
+ * @responseContent {Error} default.application/json
+ */
+router.post("/search", jwt, body(searchFilterPostBody), searchFilterPost);
 
 export default router;
