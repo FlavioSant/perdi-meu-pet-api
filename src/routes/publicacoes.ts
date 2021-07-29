@@ -6,6 +6,7 @@ import {
   publicacoesPostBody,
 } from "../validations/publicacoes";
 import {
+  minhasPublicacoes,
   publicacoesDelete,
   publicacoesGetOne,
   publicacoesPatch,
@@ -31,6 +32,17 @@ router.get(
   params(publicacoesGetParams),
   publicacoesGetOne,
 );
+
+/**
+ * GET /minhas-publicacoes
+ * @tag Publicacao
+ * @security BearerAuth
+ * @response 200
+ * @responseContent {Publicacao} 200.application/json
+ * @resopnse default
+ * @responseContent {Error} default.application/json
+ */
+router.get("/minhas-publicacoes", jwt, minhasPublicacoes);
 
 /**
  * POST /publicacoes

@@ -52,6 +52,26 @@ export const publicacoesGetOne = endpoint(async (req, res) => {
   res.status(200).json(publicacao);
 });
 
+export const minhasPublicacoes = endpoint(async (req, res) => {
+  const usuario = await Usuario.findOne({ email: req.token.email });
+
+  if (!usuario) {
+    throw new HttpError(401, "invalid token");
+  }
+
+  const items = await Publicacao.find({ usuarioId: usuario.id });
+
+  if (!items) {
+    throw new HttpError(404, "Not found");
+  }
+
+  const parsedItems = items.map((item) =>
+    parsePublicacao(item.toObject(), usuario),
+  );
+
+  res.status(200).json(parsedItems);
+});
+
 export const publicacoesPatch = endpoint(async (req, res) => {
   const usuario = await Usuario.findOne({ email: req.token.email });
 
