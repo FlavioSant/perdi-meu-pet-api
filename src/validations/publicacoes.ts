@@ -11,6 +11,7 @@ export const publicacoesPostBody = Joi.object()
     observacoes: Joi.string(),
     latitude: Joi.number().required(),
     longitude: Joi.number().required(),
+    isResolvido: Joi.boolean(),
     anexos: Joi.array().items(Joi.string().required()),
   })
   .required();
@@ -26,6 +27,7 @@ export const publicacoesPatchBody = Joi.object()
     observacoes: Joi.string(),
     latitude: Joi.number(),
     longitude: Joi.number(),
+    isResolvido: Joi.boolean(),
     anexos: Joi.array().items(Joi.string()),
   })
   .min(1)

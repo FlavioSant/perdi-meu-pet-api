@@ -11,6 +11,7 @@ export interface PublicacaoProps {
   observacoes?: string;
   latitude: number;
   longitude: number;
+  isResolvido?: boolean;
   usuarioId: string;
   anexos: string[];
   localizacao: any;
@@ -74,6 +75,10 @@ export const Publicacao = createModel<PublicacaoProps>(
         type: PointSchema,
         index: "2dsphere",
         required: true,
+      },
+      isResolvido: {
+        type: Boolean,
+        default: false,
       },
       usuarioId: {
         type: Types.ObjectId as any,
