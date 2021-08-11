@@ -9,14 +9,13 @@ const router = Router();
 /**
  * POST /search
  * @tag Search
- * @security BearerAuth
  * @bodyContent {SearchRequestPostBody} application/json
  * @response 200
  * @responseContent {Publicacao[]} 200.application/json
  * @response default
  * @responseContent {Error} default.application/json
  */
-router.post("/search", jwt, body(searchPostBody), searchPost);
+router.post("/search", body(searchPostBody), searchPost);
 
 /**
  * POST /search-filter

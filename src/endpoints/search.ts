@@ -13,6 +13,7 @@ export const searchPost = endpoint(async (req, res) => {
         $centerSphere: [[longitude, latitude], RADIUS],
       },
     },
+    isResolvido: false,
   }).populate("usuarioId");
 
   res
