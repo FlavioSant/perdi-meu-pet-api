@@ -6,6 +6,7 @@ export interface PublicacaoProps {
   categoria: "cachorro" | "gato" | "outros";
   porte: "pequeno" | "medio" | "grande";
   sexo: "macho" | "femea" | "outros";
+  celular?: string;
   cor?: string;
   nome?: string;
   observacoes?: string;
@@ -53,6 +54,9 @@ export const Publicacao = createModel<PublicacaoProps>(
         type: String,
         enum: ["macho", "femea", "outros"],
         required: true,
+      },
+      celular: {
+        type: String,
       },
       cor: {
         type: String,
