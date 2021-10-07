@@ -23,8 +23,6 @@ export const authSingUpPost = endpoint(async (req, res) => {
     senha: hash,
   });
 
-  console.log(usuario.toObject());
-
   res.status(201).json(parseUsuario(usuario));
 });
 
